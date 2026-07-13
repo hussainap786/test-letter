@@ -72,6 +72,8 @@ musicBtn.addEventListener("click", () => {
 
 surpriseBtn.addEventListener("click", () => {
 
+    document.querySelector(".container").style.display = "none";
+
     surprise.classList.add("show");
 
     createConfetti();
