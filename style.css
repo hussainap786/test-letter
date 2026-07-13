@@ -311,3 +311,354 @@ body{
     display:none;
 
 }
+
+/* ==========================================
+   SURPRISE SCREEN
+========================================== */
+
+.surprise{
+
+    position:fixed;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:rgba(7,8,18,.95);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.8s;
+
+    z-index:999;
+
+}
+
+.surprise.show{
+
+    opacity:1;
+    visibility:visible;
+
+}
+
+.glass{
+
+    width:90%;
+    max-width:700px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:25px;
+
+    padding:50px;
+
+    text-align:center;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.45);
+
+}
+
+.glass h1{
+
+    font-size:90px;
+
+}
+
+.glass h2{
+
+    margin-top:15px;
+
+    font-size:42px;
+
+    font-family:'Dancing Script',cursive;
+
+    color:#ff8fab;
+
+}
+
+.glass p{
+
+    margin-top:20px;
+
+    line-height:2;
+
+    color:#eee;
+
+}
+
+.glass button{
+
+    margin-top:35px;
+
+    padding:15px 35px;
+
+    border:none;
+
+    border-radius:40px;
+
+    background:#ff4d6d;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    transition:.35s;
+
+}
+
+.glass button:hover{
+
+    transform:translateY(-4px);
+
+}
+
+/* ==========================================
+   PHOTO GALLERY
+========================================== */
+
+.gallery{
+
+    position:fixed;
+    inset:0;
+
+    display:none;
+
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    background:#070811;
+
+    z-index:1000;
+
+}
+
+.gallery.show{
+
+    display:flex;
+
+}
+
+.gallery h1{
+
+    font-family:'Dancing Script',cursive;
+
+    font-size:55px;
+
+    margin-bottom:35px;
+
+}
+
+.photos{
+
+    width:90%;
+
+    max-width:1000px;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+}
+
+.photos img{
+
+    width:100%;
+
+    height:260px;
+
+    object-fit:cover;
+
+    border-radius:18px;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    box-shadow:0 15px 30px rgba(0,0,0,.4);
+
+}
+
+.photos img:hover{
+
+    transform:scale(1.06);
+
+}
+
+#closeGallery{
+
+    margin-top:35px;
+
+    padding:15px 35px;
+
+    border:none;
+
+    border-radius:35px;
+
+    background:#ff4d6d;
+
+    color:white;
+
+    cursor:pointer;
+
+}
+
+/* ==========================================
+   FLOATING HEARTS
+========================================== */
+
+.hearts{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+    z-index:-1;
+
+}
+
+.heart{
+
+    position:absolute;
+
+    color:#ff5c8d;
+
+    animation:heartFloat linear forwards;
+
+}
+
+@keyframes heartFloat{
+
+    from{
+
+        transform:translateY(100vh) scale(.5);
+
+        opacity:0;
+
+    }
+
+    15%{
+
+        opacity:1;
+
+    }
+
+    to{
+
+        transform:translateY(-120px) scale(1.4);
+
+        opacity:0;
+
+    }
+
+}
+
+/* ==========================================
+   CONFETTI CANVAS
+========================================== */
+
+#confetti{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+}
+
+/* ==========================================
+   FADE ANIMATIONS
+========================================== */
+
+@keyframes fadeDown{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media(max-width:768px){
+
+.title{
+
+    font-size:48px;
+
+}
+
+.subtitle{
+
+    font-size:16px;
+
+}
+
+.envelope{
+
+    width:300px;
+
+    height:210px;
+
+}
+
+.letter{
+
+    height:185px;
+
+}
+
+.glass{
+
+    padding:30px;
+
+}
+
+.glass h2{
+
+    font-size:34px;
+
+}
+
+.gallery h1{
+
+    font-size:42px;
+
+}
+
+.photos{
+
+    grid-template-columns:1fr;
+
+}
+
+}
