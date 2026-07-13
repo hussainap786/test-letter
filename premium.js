@@ -131,3 +131,13 @@ surpriseBtn.addEventListener("click",()=>{
     "linear-gradient(135deg,#2b1055,#7597de)";
 
 });
+
+window.addEventListener("load", () => {
+
+    setTimeout(() => {
+
+        document.getElementById("loader").classList.add("hide");
+
+    }, 3200);
+
+});
