@@ -1,0 +1,94 @@
+/* ---------- Animated Background ---------- */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.08) 2px, transparent 3px),
+        radial-gradient(circle at 70% 30%, rgba(255,255,255,.06) 2px, transparent 3px),
+        radial-gradient(circle at 40% 80%, rgba(255,255,255,.08) 2px, transparent 3px);
+    background-size:220px 220px;
+    animation:starsMove 35s linear infinite;
+    pointer-events:none;
+    z-index:-2;
+}
+
+@keyframes starsMove{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(220px);
+    }
+}
+
+/* ---------- Glass Card ---------- */
+
+.container{
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(12px);
+    padding:40px;
+    border-radius:24px;
+    border:1px solid rgba(255,255,255,.12);
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+
+/* ---------- Glowing Title ---------- */
+
+.title{
+    text-shadow:
+        0 0 12px rgba(255,80,120,.8),
+        0 0 25px rgba(255,80,120,.5);
+}
+
+/* ---------- Envelope Hover ---------- */
+
+.envelope{
+    transition:.4s;
+}
+
+.envelope:hover{
+    transform:translateY(-8px) scale(1.03);
+    box-shadow:0 25px 70px rgba(255,105,150,.45);
+}
+
+/* ---------- Button ---------- */
+
+button{
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 20px rgba(255,80,120,.5);
+}
+
+/* ---------- Fade Animation ---------- */
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.letter{
+    animation:fadeIn .8s ease;
+}
+
+/* ---------- Scrollbar ---------- */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#ff4d6d;
+    border-radius:20px;
+}
