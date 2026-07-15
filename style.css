@@ -1,769 +1,832 @@
-/* ===============================
-   RESET
-================================== */
+/* ===========================
+RESET
+=========================== */
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 html{
-    scroll-behavior:smooth;
+
+scroll-behavior:smooth;
+
 }
 
 body{
 
-    overflow:hidden;
+font-family:'Poppins',sans-serif;
 
-    font-family:'Poppins',sans-serif;
+background:#07111d;
 
-    background:#08111f;
+color:white;
 
-    color:white;
+overflow:hidden;
 
-    height:100vh;
-
-}
-
-/* ===============================
-   SCENES
-================================== */
-
-.scene{
-
-    position:absolute;
-
-    inset:0;
-
-    display:none;
-
-    justify-content:center;
-
-    align-items:center;
-
-    flex-direction:column;
-
-    animation:fade .8s ease;
+height:100vh;
 
 }
 
-.scene.active{
+/* ===========================
+BACKGROUND
+=========================== */
 
-    display:flex;
+#background{
 
-}
+position:fixed;
 
-@keyframes fade{
+inset:0;
 
-    from{
+overflow:hidden;
 
-        opacity:0;
+background:linear-gradient(
+180deg,
+#06101c,
+#0d1b31,
+#17294d
+);
 
-        transform:translateY(20px);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
+z-index:-2;
 
 }
 
-/* ===============================
-   LOADING
-================================== */
+/* ===========================
+MOON
+=========================== */
 
-#loading-screen{
+#moon{
 
-    position:fixed;
+position:absolute;
 
-    inset:0;
+right:80px;
 
-    background:#07111d;
+top:70px;
 
-    display:flex;
+width:140px;
 
-    justify-content:center;
+height:140px;
 
-    align-items:center;
+border-radius:50%;
 
-    flex-direction:column;
+background:#fff9d8;
 
-    z-index:9999;
+box-shadow:
 
-}
+0 0 35px #fff9d8,
 
-#loading-screen h1{
-
-    font-size:60px;
-
-    font-family:'Dancing Script',cursive;
+0 0 80px rgba(255,255,220,.35);
 
 }
 
-#loading-screen p{
+/* ===========================
+STARS
+=========================== */
 
-    margin-top:15px;
+#stars{
 
-    opacity:.75;
+position:absolute;
 
-}
+inset:0;
 
-/* ===============================
-   SKY
-================================== */
+background-image:
 
-.sky{
+radial-gradient(white 1px,transparent 1px);
 
-    position:fixed;
+background-size:65px 65px;
 
-    inset:0;
+opacity:.45;
 
-    overflow:hidden;
-
-    background:linear-gradient(
-
-    to bottom,
-
-    #071120,
-
-    #101d37,
-
-    #18294f
-
-    );
-
-}
-
-/* ===============================
-   MOON
-================================== */
-
-.moon{
-
-    position:absolute;
-
-    width:140px;
-
-    height:140px;
-
-    border-radius:50%;
-
-    background:#fff8d6;
-
-    top:70px;
-
-    right:100px;
-
-    box-shadow:
-
-    0 0 40px #fff8d6,
-
-    0 0 90px rgba(255,255,220,.4);
-
-}
-
-/* ===============================
-   STARS
-================================== */
-
-.stars{
-
-    position:absolute;
-
-    inset:0;
-
-    background-image:
-
-    radial-gradient(white 1px,transparent 1px);
-
-    background-size:70px 70px;
-
-    opacity:.45;
-
-    animation:twinkle 5s infinite alternate;
+animation:twinkle 5s infinite alternate;
 
 }
 
 @keyframes twinkle{
 
-    from{
+from{
 
-        opacity:.25;
-
-    }
-
-    to{
-
-        opacity:.6;
-
-    }
+opacity:.2;
 
 }
 
-/* ===============================
-   INTRO
-================================== */
+to{
 
-.intro-text{
-
-    text-align:center;
-
-    max-width:700px;
+opacity:.65;
 
 }
 
-.intro-text h1{
+}
 
-    font-size:70px;
+/* ===========================
+PETALS
+=========================== */
 
-    font-family:'Dancing Script',cursive;
+#petals{
+
+position:absolute;
+
+inset:0;
+
+pointer-events:none;
+
+overflow:hidden;
 
 }
 
-.intro-text p{
+/* ===========================
+LOADING
+=========================== */
 
-    margin-top:20px;
+#loading{
 
-    font-size:20px;
+position:fixed;
 
-    line-height:1.8;
+inset:0;
 
-}
+display:flex;
 
-#startBtn{
+justify-content:center;
 
-    margin-top:35px;
+align-items:center;
 
-    padding:15px 45px;
+flex-direction:column;
 
-    border:none;
+background:#07111d;
 
-    border-radius:40px;
+z-index:9999;
 
-    background:#ff8fab;
-
-    color:white;
-
-    cursor:pointer;
-
-    font-size:18px;
-
-    transition:.3s;
+transition:1s;
 
 }
 
-#startBtn:hover{
+#loading h1{
 
-    transform:scale(1.06);
+font-family:'Dancing Script',cursive;
 
-}
-
-/* ===============================
-   POSTMAN
-================================== */
-
-.postman-container{
-
-    text-align:center;
+font-size:65px;
 
 }
 
-.postman{
+#loading p{
 
-    width:280px;
+margin-top:15px;
 
-    animation:walk 2s ease;
+opacity:.8;
 
 }
 
-@keyframes walk{
+/* ===========================
+SCENES
+=========================== */
 
-    from{
+.scene{
 
-        transform:translateX(-600px);
+position:absolute;
 
-    }
+inset:0;
 
-    to{
+display:none;
 
-        transform:translateX(0);
+justify-content:center;
 
-    }
+align-items:center;
+
+animation:fade .9s ease;
+
+}
+
+.scene.active{
+
+display:flex;
+
+}
+
+@keyframes fade{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+/* ===========================
+INTRO
+=========================== */
+
+.content{
+
+text-align:center;
+
+max-width:700px;
+
+padding:20px;
+
+}
+
+.content h1{
+
+font-family:'Dancing Script',cursive;
+
+font-size:75px;
+
+margin-bottom:20px;
+
+}
+
+.content p{
+
+font-size:22px;
+
+line-height:1.8;
+
+}
+
+#begin{
+
+margin-top:40px;
+
+padding:16px 42px;
+
+border:none;
+
+border-radius:40px;
+
+background:#ff8fb1;
+
+color:white;
+
+font-size:18px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+#begin:hover{
+
+transform:translateY(-4px);
+
+box-shadow:0 15px 35px rgba(255,143,177,.4);
+
+}
+
+/* ===========================
+POSTMAN
+=========================== */
+
+.postman-area{
+
+text-align:center;
+
+}
+
+#postman{
+
+width:320px;
+
+cursor:pointer;
+
+animation:walkIn 2s ease;
+
+}
+
+@keyframes walkIn{
+
+from{
+
+transform:translateX(-600px);
+
+}
+
+to{
+
+transform:translateX(0);
+
+}
 
 }
 
 .speech{
 
-    margin-top:25px;
+margin-top:25px;
 
-    background:white;
+display:inline-block;
 
-    color:#333;
+padding:18px 28px;
 
-    padding:18px 28px;
+background:white;
 
-    border-radius:20px;
+color:#333;
 
-    display:inline-block;
+border-radius:20px;
 
-    font-size:18px;
+font-size:18px;
+
+max-width:350px;
+
+line-height:1.6;
+
+}
+/* ===========================
+FLOWERS
+=========================== */
+
+.flowers{
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+justify-content:center;
+
+text-align:center;
+
+padding:20px;
 
 }
 
-/* ===============================
-   LILIES
-================================== */
+#lilies{
 
-.gift-container{
+width:260px;
 
-    text-align:center;
+animation:float 4s ease-in-out infinite;
 
-}
-
-.lilies{
-
-    width:250px;
-
-    animation:float 3s ease-in-out infinite;
+filter:drop-shadow(0 15px 25px rgba(0,0,0,.3));
 
 }
 
 @keyframes float{
 
-    0%{
+0%{
 
-        transform:translateY(0);
-
-    }
-
-    50%{
-
-        transform:translateY(-15px);
-
-    }
-
-    100%{
-
-        transform:translateY(0);
-
-    }
+transform:translateY(0px);
 
 }
 
-.gift-container p{
+50%{
 
-    margin-top:25px;
-
-    font-size:22px;
+transform:translateY(-18px);
 
 }
 
-#nextGift{
+100%{
 
-    margin-top:30px;
-
-    padding:14px 35px;
-
-    border:none;
-
-    border-radius:35px;
-
-    background:#ff8fab;
-
-    color:white;
-
-    cursor:pointer;
-
-}
-/* ===============================
-   ENVELOPE
-================================== */
-
-.envelope-area{
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
+transform:translateY(0px);
 
 }
 
-.envelope{
+}
 
-    width:260px;
+.flowers h2{
 
-    cursor:pointer;
+margin-top:30px;
 
-    transition:.6s;
+font-family:'Dancing Script',cursive;
 
-    filter:drop-shadow(0 15px 30px rgba(0,0,0,.35));
+font-size:46px;
+
+font-weight:700;
 
 }
 
-.envelope:hover{
+#acceptFlowers{
 
-    transform:scale(1.05) rotate(-2deg);
+margin-top:35px;
+
+padding:16px 40px;
+
+border:none;
+
+border-radius:50px;
+
+background:#ff8fb1;
+
+color:white;
+
+font-size:18px;
+
+cursor:pointer;
+
+transition:.35s;
 
 }
 
-.envelope.open{
+#acceptFlowers:hover{
 
-    transform:translateY(-20px) scale(1.08);
+transform:translateY(-4px);
 
-}
-
-.envelope-area p{
-
-    margin-top:20px;
-
-    font-size:20px;
-
-    opacity:.85;
+box-shadow:0 15px 35px rgba(255,143,177,.45);
 
 }
 
-/* ===============================
-   LETTER
-================================== */
+/* ===========================
+ENVELOPE
+=========================== */
+
+.envelopeBox{
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+text-align:center;
+
+}
+
+#envelope{
+
+width:240px;
+
+cursor:pointer;
+
+transition:.6s;
+
+filter:drop-shadow(0 18px 28px rgba(0,0,0,.35));
+
+}
+
+#envelope:hover{
+
+transform:scale(1.05) rotate(-3deg);
+
+}
+
+.envelopeBox p{
+
+margin-top:25px;
+
+font-size:20px;
+
+opacity:.85;
+
+}
+
+/* ===========================
+LETTER
+=========================== */
 
 .letter-container{
 
-    display:flex;
+display:flex;
 
-    justify-content:center;
+justify-content:center;
 
-    align-items:center;
+align-items:center;
 
-    width:100%;
+width:100%;
+
+padding:25px;
 
 }
 
 .letter{
 
-    width:90%;
+width:90%;
 
-    max-width:750px;
+max-width:760px;
 
-    min-height:520px;
+min-height:520px;
 
-    background:#fffdf8;
+background:#fffdf9;
 
-    color:#444;
+color:#333;
 
-    border-radius:25px;
+border-radius:25px;
 
-    padding:45px;
+padding:45px;
 
-    box-shadow:
+box-shadow:
 
-    0 25px 60px rgba(0,0,0,.35);
-
-    position:relative;
+0 25px 60px rgba(0,0,0,.35);
 
 }
 
 .letter h2{
 
-    text-align:center;
+font-family:'Dancing Script',cursive;
 
-    font-size:48px;
+font-size:52px;
 
-    color:#d86d8b;
+text-align:center;
 
-    margin-bottom:35px;
+margin-bottom:35px;
 
-    font-family:'Dancing Script',cursive;
+color:#d97996;
 
 }
 
 #typewriter{
 
-    line-height:2;
+font-size:18px;
 
-    font-size:18px;
+line-height:2;
 
-    min-height:280px;
+white-space:pre-wrap;
 
-    white-space:pre-wrap;
-
-}
-
-#continueBtn{
-
-    display:none;
-
-    margin:45px auto 0;
-
-    padding:16px 40px;
-
-    border:none;
-
-    border-radius:40px;
-
-    background:#ff8fab;
-
-    color:white;
-
-    cursor:pointer;
-
-    font-size:18px;
+min-height:280px;
 
 }
 
-/* ===============================
-   TIMER CARD
-================================== */
+#continue{
 
-.timer-card{
+display:none;
 
-    width:90%;
+margin:40px auto 0;
 
-    max-width:700px;
+padding:15px 38px;
 
-    padding:45px;
+border:none;
 
-    border-radius:30px;
+border-radius:40px;
 
-    text-align:center;
+background:#ff8fb1;
 
-    background:rgba(255,255,255,.08);
+color:white;
 
-    backdrop-filter:blur(20px);
+cursor:pointer;
 
-    border:1px solid rgba(255,255,255,.15);
+font-size:18px;
 
 }
 
-.timer-card h1{
+/* ===========================
+GLASS CARD
+=========================== */
 
-    font-family:'Dancing Script',cursive;
+.glass-card{
 
-    font-size:52px;
+width:90%;
+
+max-width:720px;
+
+padding:45px;
+
+border-radius:28px;
+
+text-align:center;
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.15);
+
+}
+
+.glass-card h1{
+
+font-family:'Dancing Script',cursive;
+
+font-size:54px;
+
+margin-bottom:35px;
 
 }
 
 #timer{
 
-    margin:40px 0;
+font-size:28px;
 
-    font-size:30px;
+line-height:2;
 
-    line-height:2;
-
-}
-
-/* ===============================
-   BUTTONS
-================================== */
-
-.buttons{
-
-    display:flex;
-
-    justify-content:center;
-
-    flex-wrap:wrap;
-
-    gap:18px;
+margin-bottom:40px;
 
 }
 
-.buttons a,
+/* ===========================
+BUTTONS
+=========================== */
 
-.buttons button{
+.action-buttons{
 
-    text-decoration:none;
+display:flex;
 
-    padding:16px 32px;
+justify-content:center;
 
-    border-radius:40px;
+gap:18px;
 
-    background:#ff8fab;
-
-    color:white;
-
-    border:none;
-
-    cursor:pointer;
-
-    font-size:17px;
-
-    transition:.3s;
+flex-wrap:wrap;
 
 }
 
-.buttons a:hover,
+.action-buttons a,
 
-.buttons button:hover{
+.action-buttons button{
 
-    transform:translateY(-5px);
+padding:16px 32px;
+
+border-radius:40px;
+
+background:#ff8fb1;
+
+color:white;
+
+text-decoration:none;
+
+border:none;
+
+font-size:17px;
+
+cursor:pointer;
+
+transition:.3s;
 
 }
 
-/* ===============================
-   FINAL
-================================== */
+.action-buttons a:hover,
+
+.action-buttons button:hover{
+
+transform:translateY(-5px);
+
+box-shadow:0 15px 35px rgba(255,143,177,.4);
+
+}
+
+/* ===========================
+ENDING
+=========================== */
 
 .ending{
 
-    text-align:center;
+text-align:center;
+
+padding:20px;
 
 }
 
 .ending h1{
 
-    font-size:72px;
+font-family:'Dancing Script',cursive;
 
-    font-family:'Dancing Script',cursive;
+font-size:70px;
+
+margin-bottom:25px;
 
 }
 
 .ending p{
 
-    margin-top:30px;
+font-size:24px;
 
-    line-height:2;
-
-    font-size:24px;
+line-height:2;
 
 }
 
-/* ===============================
-   PETALS
-================================== */
-
-.petals{
-
-    position:fixed;
-
-    inset:0;
-
-    pointer-events:none;
-
-    overflow:hidden;
-
-}
+/* ===========================
+PETALS
+=========================== */
 
 .petal{
 
-    position:absolute;
+position:absolute;
 
-    font-size:22px;
+pointer-events:none;
 
-    animation:fall linear forwards;
+animation:fall linear forwards;
 
 }
 
 @keyframes fall{
 
-    from{
+0%{
 
-        transform:translateY(-120px) rotate(0deg);
+opacity:0;
 
-        opacity:0;
-
-    }
-
-    10%{
-
-        opacity:1;
-
-    }
-
-    to{
-
-        transform:translateY(110vh) rotate(360deg);
-
-        opacity:0;
-
-    }
+transform:translateY(-120px) rotate(0deg);
 
 }
 
-/* ===============================
-   RESPONSIVE
-================================== */
+10%{
+
+opacity:1;
+
+}
+
+100%{
+
+opacity:0;
+
+transform:translateY(110vh) rotate(360deg);
+
+}
+
+}
+
+/* ===========================
+RESPONSIVE
+=========================== */
 
 @media(max-width:768px){
 
-.intro-text h1{
+.content h1{
 
-    font-size:48px;
-
-}
-
-.intro-text p{
-
-    font-size:17px;
+font-size:50px;
 
 }
 
-.postman{
+.content p{
 
-    width:210px;
-
-}
-
-.lilies{
-
-    width:200px;
+font-size:18px;
 
 }
 
-.envelope{
+#postman{
 
-    width:210px;
+width:220px;
+
+}
+
+#lilies{
+
+width:200px;
+
+}
+
+#envelope{
+
+width:190px;
 
 }
 
 .letter{
 
-    padding:25px;
+padding:25px;
+
+min-height:auto;
 
 }
 
 .letter h2{
 
-    font-size:38px;
+font-size:38px;
+
+}
+
+#typewriter{
+
+font-size:16px;
+
+}
+
+.glass-card{
+
+padding:25px;
+
+}
+
+.glass-card h1{
+
+font-size:40px;
 
 }
 
 #timer{
 
-    font-size:22px;
+font-size:22px;
 
 }
 
-.buttons{
+.action-buttons{
 
-    flex-direction:column;
+flex-direction:column;
 
 }
 
-.buttons a,
+.action-buttons a,
 
-.buttons button{
+.action-buttons button{
 
-    width:100%;
+width:100%;
 
 }
 
 .ending h1{
 
-    font-size:48px;
+font-size:50px;
 
 }
 
 .ending p{
 
-    font-size:18px;
+font-size:18px;
 
 }
 
