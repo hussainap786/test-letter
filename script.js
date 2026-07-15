@@ -1,48 +1,66 @@
-/* ==========================================
-   ELEMENTS
-========================================== */
+/*==================================================
+        A SPECIAL DELIVERY
+        Script Part 1
+==================================================*/
 
-const loading = document.getElementById("loading-screen");
+/* =====================
+   ELEMENTS
+===================== */
 
 const scenes = document.querySelectorAll(".scene");
 
-const startBtn = document.getElementById("startBtn");
+const loading = document.getElementById("loading");
+
+const beginBtn = document.getElementById("begin");
 
 const postman = document.getElementById("postman");
 
-const nextGift = document.getElementById("nextGift");
+const acceptFlowers = document.getElementById("acceptFlowers");
 
 const envelope = document.getElementById("envelope");
 
-const typewriter = document.getElementById("typewriter");
+const continueBtn = document.getElementById("continue");
 
-const continueBtn = document.getElementById("continueBtn");
-
-const finalBtn = document.getElementById("finalBtn");
-
-const music = document.getElementById("music");
-
-const petals = document.querySelector(".petals");
+const finalBtn = document.getElementById("finalMessage");
 
 const timer = document.getElementById("timer");
 
-/* ==========================================
-   LINKS (Replace Later)
-========================================== */
+const petalsContainer = document.getElementById("petals");
 
-document.getElementById("spotifyBtn").href="#";
+const music = document.getElementById("music");
 
-document.getElementById("tiktokBtn").href="#";
+const typewriter = document.getElementById("typewriter");
 
-/* ==========================================
-   LOADING SCREEN
-========================================== */
+/* =====================
+   LETTER
+===================== */
 
-window.onload=()=>{
+const letter = `
+
+Dear You,
+
+This is where your love letter will appear.
+
+We'll replace this later with your actual letter.
+
+Everything will be typed beautifully,
+one letter at a time.
+
+🤍
+
+`;
+
+/* =====================
+   LOADING
+===================== */
+
+window.addEventListener("load",()=>{
 
 setTimeout(()=>{
 
 loading.style.opacity="0";
+
+loading.style.pointerEvents="none";
 
 setTimeout(()=>{
 
@@ -50,99 +68,73 @@ loading.style.display="none";
 
 },1000);
 
-},2500);
-
-}
-
-/* ==========================================
-   SCENE SWITCHER
-========================================== */
-
-function showScene(number){
-
-scenes.forEach(scene=>{
-
-scene.classList.remove("active");
+},2200);
 
 });
 
-document.getElementById("scene"+number)
+/* =====================
+   SCENE SWITCH
+===================== */
 
+function showScene(scene){
+
+scenes.forEach(item=>{
+
+item.classList.remove("active");
+
+});
+
+document
+.getElementById(scene)
 .classList.add("active");
 
 }
 
-/* ==========================================
-   START
-========================================== */
+/* =====================
+   STORY
+===================== */
 
-startBtn.onclick=()=>{
+beginBtn.addEventListener("click",()=>{
 
-showScene(2);
+showScene("scene2");
 
-}
+});
 
-/* ==========================================
-   POSTMAN
-========================================== */
+postman.addEventListener("click",()=>{
 
-postman.onclick=()=>{
+showScene("scene3");
 
-showScene(3);
+});
 
-}
+acceptFlowers.addEventListener("click",()=>{
 
-/* ==========================================
-   LILIES
-========================================== */
+showScene("scene4");
 
-nextGift.onclick=()=>{
+});
 
-showScene(4);
+envelope.addEventListener("click",()=>{
 
-}
-
-/* ==========================================
-   ENVELOPE
-========================================== */
-
-envelope.onclick=()=>{
-
-envelope.classList.add("open");
+envelope.style.transform="scale(1.1)";
 
 setTimeout(()=>{
 
-showScene(5);
+showScene("scene5");
 
 music.play();
 
-typeLetter();
+typeWriter();
 
-},1200);
+},900);
 
-}
+});
 
-/* ==========================================
-   LETTER
-========================================== */
-
-const letter=`
-
-Hi,
-
-(Your letter will go here.)
-
-Every word you want
-will appear beautifully
-using the typewriter effect.
-
-🤍
-
-`;
+/* =====================
+   TYPEWRITER
+===================== */
 
 let index=0;
 
-function typeLetter(){
+function typeWriter(){
 
 if(index<letter.length){
 
@@ -150,7 +142,7 @@ typewriter.innerHTML+=letter.charAt(index);
 
 index++;
 
-setTimeout(typeLetter,40);
+setTimeout(typeWriter,38);
 
 }
 
@@ -162,47 +154,67 @@ continueBtn.style.display="block";
 
 }
 
-/* ==========================================
+/* =====================
    CONTINUE
-========================================== */
+===================== */
 
-continueBtn.onclick=()=>{
+continueBtn.addEventListener("click",()=>{
 
-showScene(6);
+showScene("scene6");
 
-}
+});
 
-/* ==========================================
+/* =====================
+   FINAL BUTTON
+===================== */
+
+finalBtn.addEventListener("click",()=>{
+
+showScene("scene7");
+
+});
+/*==================================================
+        SCRIPT PART 2
+        TIMER + PETALS + SPARKLES
+==================================================*/
+
+/* =====================
    LIVE TIMER
-========================================== */
+===================== */
 
-const startDate=new Date(
-
-"2023-04-19T00:00:00"
-
-);
+const meetDate = new Date("2023-04-19T00:00:00");
 
 function updateTimer(){
 
-const now=new Date();
+    const now = new Date();
 
-let diff=now-startDate;
+    let difference = now - meetDate;
 
-const seconds=Math.floor(diff/1000)%60;
+    const seconds = Math.floor(difference / 1000) % 60;
 
-const minutes=Math.floor(diff/60000)%60;
+    const minutes = Math.floor(difference / 60000) % 60;
 
-const hours=Math.floor(diff/3600000)%24;
+    const hours = Math.floor(difference / 3600000) % 24;
 
-const days=Math.floor(diff/86400000);
+    const totalDays = Math.floor(difference / 86400000);
 
-timer.innerHTML=`
+    const years = Math.floor(totalDays / 365);
 
-❤️ ${days} Days
+    const months = Math.floor((totalDays % 365) / 30);
 
-🕒 ${hours} Hours
+    const days = Math.floor((totalDays % 365) % 30);
 
-⏱ ${minutes} Minutes
+    timer.innerHTML = `
+
+❤️ ${years} Years<br>
+
+🌸 ${months} Months<br>
+
+☀️ ${days} Days<br>
+
+🕒 ${hours} Hours<br>
+
+⏱️ ${minutes} Minutes<br>
 
 ✨ ${seconds} Seconds
 
@@ -210,28 +222,31 @@ timer.innerHTML=`
 
 }
 
+updateTimer();
+
 setInterval(updateTimer,1000);
 
-updateTimer();
-/* ==========================================
-   LILY PETALS
-========================================== */
+/* =====================
+   FALLING PETALS
+===================== */
 
 function createPetal(){
 
-    const petal=document.createElement("div");
+    const petal = document.createElement("div");
 
-    petal.className="petal";
+    petal.classList.add("petal");
 
-    petal.innerHTML="🤍";
+    petal.innerHTML = "🌸";
 
-    petal.style.left=Math.random()*100+"vw";
+    petal.style.left = Math.random()*100+"vw";
 
-    petal.style.animationDuration=(8+Math.random()*5)+"s";
+    petal.style.animationDuration =
+    (8 + Math.random()*5)+"s";
 
-    petal.style.fontSize=(16+Math.random()*16)+"px";
+    petal.style.fontSize =
+    (16 + Math.random()*18)+"px";
 
-    petals.appendChild(petal);
+    petalsContainer.appendChild(petal);
 
     setTimeout(()=>{
 
@@ -243,9 +258,76 @@ function createPetal(){
 
 setInterval(createPetal,700);
 
-/* ==========================================
-   SHOOTING STAR
-========================================== */
+/* =====================
+   SPARKLES
+===================== */
+
+function sparkle(){
+
+    const star=document.createElement("div");
+
+    star.innerHTML="✨";
+
+    star.style.position="fixed";
+
+    star.style.left=Math.random()*100+"vw";
+
+    star.style.top=Math.random()*100+"vh";
+
+    star.style.fontSize=
+    (10+Math.random()*12)+"px";
+
+    star.style.pointerEvents="none";
+
+    star.style.opacity=".8";
+
+    document.body.appendChild(star);
+
+    star.animate([
+
+        {
+
+            opacity:0,
+
+            transform:"scale(.3)"
+
+        },
+
+        {
+
+            opacity:1,
+
+            transform:"scale(1.3)"
+
+        },
+
+        {
+
+            opacity:0,
+
+            transform:"scale(.3)"
+
+        }
+
+    ],{
+
+        duration:2200
+
+    });
+
+    setTimeout(()=>{
+
+        star.remove();
+
+    },2200);
+
+}
+
+setInterval(sparkle,1500);
+
+/* =====================
+   SHOOTING STARS
+===================== */
 
 function shootingStar(){
 
@@ -257,17 +339,16 @@ function shootingStar(){
 
     star.style.height="3px";
 
-    star.style.borderRadius="50%";
-
     star.style.background="white";
 
-    star.style.boxShadow="0 0 20px white";
+    star.style.borderRadius="50%";
 
-    star.style.left=Math.random()*window.innerWidth+"px";
+    star.style.boxShadow="0 0 18px white";
+
+    star.style.left=
+    Math.random()*window.innerWidth+"px";
 
     star.style.top="-20px";
-
-    star.style.zIndex="3";
 
     document.body.appendChild(star);
 
@@ -275,11 +356,11 @@ function shootingStar(){
 
     let y=-20;
 
-    const move=setInterval(()=>{
+    const animation=setInterval(()=>{
 
-        x+=7;
+        x+=8;
 
-        y+=7;
+        y+=8;
 
         star.style.left=x+"px";
 
@@ -287,7 +368,7 @@ function shootingStar(){
 
         if(y>window.innerHeight){
 
-            clearInterval(move);
+            clearInterval(animation);
 
             star.remove();
 
@@ -297,51 +378,225 @@ function shootingStar(){
 
 }
 
-setInterval(shootingStar,8000);
+setInterval(shootingStar,9000);
+/*==================================================
+        SCRIPT PART 3
+    ENVELOPE + MUSIC + EFFECTS
+==================================================*/
 
-/* ==========================================
-   BUTTON LINKS
-========================================== */
+/* =====================
+   ENVELOPE ANIMATION
+===================== */
 
-/* Replace these later */
+envelope.addEventListener("mouseenter",()=>{
 
-document.getElementById("spotifyBtn").onclick=()=>{
+    envelope.style.transform="scale(1.05) rotate(-3deg)";
 
-window.open(
+});
 
-"https://spotify.com",
+envelope.addEventListener("mouseleave",()=>{
 
-"_blank"
+    envelope.style.transform="scale(1)";
 
-);
+});
+
+/* =====================
+   OPEN ENVELOPE
+===================== */
+
+function openEnvelope(){
+
+    envelope.style.transition="1s";
+
+    envelope.style.transform="scale(1.15) rotate(5deg)";
+
+    createSparkleBurst();
+
+    setTimeout(()=>{
+
+        showScene("scene5");
+
+        startMusic();
+
+        typeWriter();
+
+    },1200);
 
 }
 
-document.getElementById("tiktokBtn").onclick=()=>{
+/* =====================
+   MUSIC
+===================== */
 
-window.open(
+function startMusic(){
 
-"https://tiktok.com",
+    music.volume=0;
 
-"_blank"
+    music.play();
 
-);
+    let volume=0;
+
+    const fade=setInterval(()=>{
+
+        volume+=0.05;
+
+        music.volume=volume;
+
+        if(volume>=1){
+
+            clearInterval(fade);
+
+        }
+
+    },150);
 
 }
 
-/* ==========================================
-   FINAL NOTE
-========================================== */
+/* =====================
+   MUSIC FADE OUT
+===================== */
 
-finalBtn.onclick=()=>{
+function stopMusic(){
 
-showScene(7);
+    let volume=music.volume;
+
+    const fade=setInterval(()=>{
+
+        volume-=0.03;
+
+        music.volume=volume;
+
+        if(volume<=0){
+
+            music.pause();
+
+            clearInterval(fade);
+
+        }
+
+    },120);
 
 }
 
-/* ==========================================
-   PAGE TITLE ANIMATION
-========================================== */
+/* =====================
+   SPARKLE BURST
+===================== */
+
+function createSparkleBurst(){
+
+    for(let i=0;i<25;i++){
+
+        const sparkle=document.createElement("div");
+
+        sparkle.innerHTML="✨";
+
+        sparkle.style.position="fixed";
+
+        sparkle.style.left="50%";
+
+        sparkle.style.top="50%";
+
+        sparkle.style.fontSize=(18+Math.random()*10)+"px";
+
+        sparkle.style.pointerEvents="none";
+
+        document.body.appendChild(sparkle);
+
+        const x=(Math.random()-0.5)*500;
+
+        const y=(Math.random()-0.5)*500;
+
+        sparkle.animate([
+
+            {
+
+                transform:"translate(0,0) scale(.3)",
+
+                opacity:1
+
+            },
+
+            {
+
+                transform:`translate(${x}px,${y}px) scale(1.3)`,
+
+                opacity:0
+
+            }
+
+        ],{
+
+            duration:1800,
+
+            easing:"ease-out"
+
+        });
+
+        setTimeout(()=>{
+
+            sparkle.remove();
+
+        },1800);
+
+    }
+
+}
+
+/* =====================
+   BUTTON HOVER SOUND
+===================== */
+
+document.querySelectorAll("button").forEach(btn=>{
+
+    btn.addEventListener("mouseenter",()=>{
+
+        btn.style.transform="translateY(-5px) scale(1.03)";
+
+    });
+
+    btn.addEventListener("mouseleave",()=>{
+
+        btn.style.transform="translateY(0) scale(1)";
+
+    });
+
+});
+
+/* =====================
+   MOBILE VIBRATION
+===================== */
+
+function vibrate(){
+
+    if(navigator.vibrate){
+
+        navigator.vibrate(40);
+
+    }
+
+}
+
+beginBtn.addEventListener("click",vibrate);
+
+postman.addEventListener("click",vibrate);
+
+acceptFlowers.addEventListener("click",vibrate);
+
+envelope.addEventListener("click",vibrate);
+
+/* =====================
+   FINAL BUTTON
+===================== */
+
+finalBtn.addEventListener("click",()=>{
+
+    stopMusic();
+
+});
+
+/* =====================
+   TAB TITLE
+===================== */
 
 const titles=[
 
@@ -349,148 +604,212 @@ const titles=[
 
 "You've Got Mail 💌",
 
-"Open Me 🌸",
+"Someone Is Thinking Of You 🌸",
 
-"Someone's Thinking Of You 🤍"
+"Open Me 🤍"
 
 ];
 
-let titleIndex=0;
+let currentTitle=0;
 
 setInterval(()=>{
 
-document.title=titles[titleIndex];
+    document.title=titles[currentTitle];
 
-titleIndex++;
+    currentTitle++;
 
-if(titleIndex>=titles.length){
+    if(currentTitle>=titles.length){
 
-titleIndex=0;
+        currentTitle=0;
 
-}
+    }
 
-},2500);
+},3000);
 
-/* ==========================================
-   FADE MUSIC AT END
-========================================== */
+/* =====================
+   END PART 3
+===================== */
+/*==================================================
+        SCRIPT PART 4
+        FINAL POLISH
+==================================================*/
 
-function fadeMusic(){
+/* =====================
+   ENVELOPE CLICK
+===================== */
 
-let volume=1;
+envelope.onclick = () => {
 
-const fade=setInterval(()=>{
+    openEnvelope();
 
-if(volume<=0){
+};
 
-music.pause();
+/* =====================
+   FINAL MESSAGE
+===================== */
 
-clearInterval(fade);
+const finalMessage = `
 
-}
+Thank you for reading my heart.
 
-else{
+I hope this little surprise
+made you smile.
 
-volume-=0.02;
+🤍
 
-music.volume=volume;
+No matter how much time passes...
 
-}
+You'll always be someone
+very special to me.
 
-},120);
+🌸
 
-}
+`;
 
-finalBtn.addEventListener("click",fadeMusic);
+/* =====================
+   FINAL NOTE POPUP
+===================== */
 
-/* ==========================================
-   LITTLE SPARKLES
-========================================== */
+finalBtn.addEventListener("click", () => {
 
-function sparkle(){
+    const box = document.createElement("div");
 
-const s=document.createElement("div");
+    box.className = "popup";
 
-s.innerHTML="✨";
+    box.innerHTML = `
 
-s.style.position="fixed";
+        <div class="popupCard">
 
-s.style.left=Math.random()*100+"vw";
+            <h2>🤍</h2>
 
-s.style.top=Math.random()*100+"vh";
+            <p>${finalMessage.replace(/\n/g,"<br>")}</p>
 
-s.style.fontSize=(12+Math.random()*10)+"px";
+            <button id="closePopup">
 
-s.style.pointerEvents="none";
+                Close
 
-s.style.opacity=".9";
+            </button>
 
-document.body.appendChild(s);
+        </div>
 
-s.animate([
+    `;
 
-{
+    document.body.appendChild(box);
 
-opacity:0,
+    document
+    .getElementById("closePopup")
+    .onclick = () => {
 
-transform:"scale(.5)"
+        box.remove();
 
-},
+        showScene("scene7");
 
-{
-
-opacity:1,
-
-transform:"scale(1.2)"
-
-},
-
-{
-
-opacity:0,
-
-transform:"scale(.5)"
-
-}
-
-],{
-
-duration:2200
+    };
 
 });
 
-setTimeout(()=>{
+/* =====================
+   FADE IN SCENES
+===================== */
 
-s.remove();
+function fadeScene(sceneID){
 
-},2200);
+    scenes.forEach(scene=>{
+
+        scene.style.opacity="0";
+
+        scene.classList.remove("active");
+
+    });
+
+    setTimeout(()=>{
+
+        document
+        .getElementById(sceneID)
+        .classList.add("active");
+
+        document
+        .getElementById(sceneID)
+        .style.opacity="1";
+
+    },400);
 
 }
 
-setInterval(sparkle,1200);
+/* =====================
+   EXTRA PETALS
+===================== */
 
-/* ==========================================
-   MOBILE VIBRATION
-========================================== */
+setInterval(()=>{
 
-function vibrate(){
+    if(document.getElementById("scene5").classList.contains("active")){
 
-if(navigator.vibrate){
+        createPetal();
 
-navigator.vibrate(40);
+    }
 
-}
+},500);
 
-}
+/* =====================
+   GLOWING MOON
+===================== */
 
-startBtn.addEventListener("click",vibrate);
+const moon = document.getElementById("moon");
 
-postman.addEventListener("click",vibrate);
+let glow = 0;
 
-nextGift.addEventListener("click",vibrate);
+setInterval(()=>{
 
-envelope.addEventListener("click",vibrate);
+    glow++;
 
-/* ==========================================
+    moon.style.boxShadow =
+
+    `0 0 ${35+Math.sin(glow/8)*12}px #fff9d8,
+     0 0 ${90+Math.sin(glow/8)*20}px rgba(255,255,220,.4)`;
+
+},120);
+
+/* =====================
+   TYPEWRITER CURSOR
+===================== */
+
+setInterval(()=>{
+
+    if(typewriter.innerHTML.endsWith("|")){
+
+        typewriter.innerHTML=
+        typewriter.innerHTML.slice(0,-1);
+
+    }
+
+    else{
+
+        typewriter.innerHTML+="|";
+
+    }
+
+},550);
+
+/* =====================
+   CONSOLE MESSAGE
+===================== */
+
+console.log(
+
+"%c🤍 A Special Delivery",
+
+"font-size:22px;color:pink;font-weight:bold;"
+
+);
+
+console.log(
+
+"%cMade with love by Rocky.",
+
+"font-size:14px;color:white;"
+
+);
+
+/* =====================
    END
-========================================== */
+===================== */
