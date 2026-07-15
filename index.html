@@ -3,56 +3,88 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-<title>A Special Delivery 🤍</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="style.css">
+    <title>A Special Delivery 🤍</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet"
+          href="style.css">
 
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Dancing+Script:wght@700&display=swap"
+          rel="stylesheet">
 
 </head>
 
 <body>
 
-<!-- ================= Loading Screen ================= -->
+<!-- ===========================
+BACKGROUND
+=========================== -->
 
-<section id="loading-screen">
+<div id="background">
 
-<h1>A Special Delivery 🤍</h1>
+    <div id="moon"></div>
 
-<p>A special delivery is on its way...</p>
+    <div id="stars"></div>
 
-</section>
-
-<!-- ================= Background ================= -->
-
-<div class="sky">
-
-<div class="moon"></div>
-
-<div class="stars"></div>
-
-<div class="petals"></div>
+    <div id="petals"></div>
 
 </div>
 
-<!-- ================= Scene 1 ================= -->
+<!-- ===========================
+LOADING SCREEN
+=========================== -->
 
-<section id="scene1" class="scene active">
+<section id="loading">
 
-<div class="intro-text">
+    <h1>
 
-<h1>A Special Delivery</h1>
+        A Special Delivery 🤍
 
-<p>Someone has sent you something from their heart...</p>
+    </h1>
 
-<button id="startBtn">
+    <p>
+
+        Preparing your surprise...
+
+    </p>
+
+</section>
+
+<!-- ===========================
+SCENE 1
+=========================== -->
+
+<section
+class="scene active"
+id="scene1">
+
+<div class="content">
+
+<h1>
+
+A Special Delivery
+
+</h1>
+
+<p>
+
+Someone has sent you
+something special...
+
+</p>
+
+<button id="begin">
 
 Open Delivery
 
@@ -62,21 +94,30 @@ Open Delivery
 
 </section>
 
-<!-- ================= Scene 2 ================= -->
+<!-- ===========================
+SCENE 2
+=========================== -->
 
-<section id="scene2" class="scene">
+<section
+class="scene"
+id="scene2">
 
-<div class="postman-container">
+<div class="postman-area">
 
-<img src="assets/images/postman.png"
+<img
 
-class="postman"
+src="assets/images/postman.png"
 
-id="postman">
+id="postman"
+
+alt="Postman">
 
 <div class="speech">
 
-Hey! I have a special delivery for you.
+Hey!
+
+I have a special
+delivery for you.
 
 </div>
 
@@ -84,25 +125,35 @@ Hey! I have a special delivery for you.
 
 </section>
 
-<!-- ================= Scene 3 ================= -->
+<!-- ===========================
+SCENE 3
+=========================== -->
 
-<section id="scene3" class="scene">
+<section
+class="scene"
+id="scene3">
 
-<div class="gift-container">
+<div class="flowers">
 
-<img src="assets/images/lilies.png"
+<img
 
-class="lilies"
+src="assets/images/lilies.png"
 
-id="lilies">
+id="lilies"
 
-<p>
+alt="Lilies">
 
-These lilies are for you. 🤍
+<h2>
 
-</p>
+These lilies
+are for you.
 
-<button id="nextGift">
+🤍
+
+</h2>
+
+<button
+id="acceptFlowers">
 
 Accept Flowers
 
@@ -112,41 +163,57 @@ Accept Flowers
 
 </section>
 
-<!-- ================= Scene 4 ================= -->
+<!-- ===========================
+SCENE 4
+=========================== -->
 
-<section id="scene4" class="scene">
+<section
+class="scene"
+id="scene4">
 
-<div class="envelope-area">
+<div class="envelopeBox">
 
-<img src="assets/images/envelope.png"
+<img
+
+src="assets/images/envelope.png"
 
 id="envelope"
 
-class="envelope">
+alt="Envelope">
 
 <p>
 
 Tap the envelope
+to open it.
 
 </p>
 
 </div>
 
 </section>
+<!-- ===========================
+SCENE 5
+=========================== -->
 
-<!-- ================= Scene 5 ================= -->
-
-<section id="scene5" class="scene">
+<section
+class="scene"
+id="scene5">
 
 <div class="letter-container">
 
 <div class="letter">
 
-<h2>Dear You 🤍</h2>
+<h2>
 
-<div id="typewriter"></div>
+Dear You 🤍
 
-<button id="continueBtn">
+</h2>
+
+<div id="typewriter">
+
+</div>
+
+<button id="continue">
 
 One More Thing...
 
@@ -158,11 +225,15 @@ One More Thing...
 
 </section>
 
-<!-- ================= Scene 6 ================= -->
+<!-- ===========================
+SCENE 6
+=========================== -->
 
-<section id="scene6" class="scene">
+<section
+class="scene"
+id="scene6">
 
-<div class="timer-card">
+<div class="glass-card">
 
 <h1>
 
@@ -170,27 +241,41 @@ Since Our Paths Crossed...
 
 </h1>
 
-<div id="timer"></div>
+<div id="timer">
 
-<div class="buttons">
+</div>
 
-<a id="spotifyBtn"
+<div class="action-buttons">
 
-target="_blank">
+<a
 
-🎵 Playlist
-
-</a>
-
-<a id="tiktokBtn"
+id="spotifyBtn"
 
 target="_blank">
 
-🎥 TikTok
+🎵
+
+Our Playlist
 
 </a>
 
-<button id="finalBtn">
+<a
+
+id="tiktokBtn"
+
+target="_blank">
+
+🎥
+
+TikTok
+
+</a>
+
+<button
+
+id="finalMessage">
+
+💌
 
 Final Note
 
@@ -202,15 +287,23 @@ Final Note
 
 </section>
 
-<!-- ================= Final Scene ================= -->
+<!-- ===========================
+SCENE 7
+=========================== -->
 
-<section id="scene7" class="scene">
+<section
+
+class="scene"
+
+id="scene7">
 
 <div class="ending">
 
 <h1>
 
-Thank You 🤍
+Thank You
+
+🤍
 
 </h1>
 
@@ -228,15 +321,35 @@ But my feelings don't.
 
 </section>
 
-<!-- ================= Music ================= -->
+<!-- ===========================
+BACKGROUND MUSIC
+=========================== -->
 
-<audio id="music" preload="auto">
+<audio
 
-<source src="music.mp3" type="audio/mpeg">
+id="music"
+
+preload="auto"
+
+loop>
+
+<source
+
+src="music.mp3"
+
+type="audio/mpeg">
 
 </audio>
 
-<script src="script.js"></script>
+<!-- ===========================
+SCRIPT
+=========================== -->
+
+<script
+
+src="script.js">
+
+</script>
 
 </body>
 
