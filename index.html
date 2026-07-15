@@ -6,11 +6,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>For Someone Special ❤️</title>
+<title>A Special Delivery 🤍</title>
 
 <link rel="stylesheet" href="style.css">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
@@ -19,111 +20,91 @@
 
 <body>
 
+<!-- ================= Loading Screen ================= -->
+
+<section id="loading-screen">
+
+<h1>A Special Delivery 🤍</h1>
+
+<p>A special delivery is on its way...</p>
+
+</section>
+
 <!-- ================= Background ================= -->
+
+<div class="sky">
+
+<div class="moon"></div>
 
 <div class="stars"></div>
 
-<div class="hearts"></div>
-
-<div class="overlay"></div>
-
-<!-- ================= Music ================= -->
-
-<div class="music-box">
-
-<button id="musicBtn">
-
-🎵 Play Music
-
-</button>
-
-<audio id="music" loop>
-
-<source src="music.mp3" type="audio/mp3">
-
-</audio>
+<div class="petals"></div>
 
 </div>
 
-<!-- ================= Main Container ================= -->
+<!-- ================= Scene 1 ================= -->
 
-<div class="container">
+<section id="scene1" class="scene active">
 
-<h1 class="title">
+<div class="intro-text">
 
-You've Got Mail 💌
+<h1>A Special Delivery</h1>
 
-</h1>
+<p>Someone has sent you something from their heart...</p>
 
-<p class="subtitle">
+<button id="startBtn">
 
-Click the envelope to open your letter
-
-</p>
-
-<!-- ================= Envelope ================= -->
-
-<div class="envelope" id="envelope">
-
-<div class="lid"></div>
-
-<div class="cover"></div>
-
-<div class="letter">
-
-<h2>
-
-Dear You ❤️
-
-</h2>
-
-<p id="message"></p>
-
-<button id="nextBtn">
-
-One More Thing →
+Open Delivery
 
 </button>
 
 </div>
 
-</div>
+</section>
+
+<!-- ================= Scene 2 ================= -->
+
+<section id="scene2" class="scene">
+
+<div class="postman-container">
+
+<img src="assets/images/postman.png"
+
+class="postman"
+
+id="postman">
+
+<div class="speech">
+
+Hey! I have a special delivery for you.
 
 </div>
 
-<!-- ================= Surprise Screen ================= -->
+</div>
 
-<section class="surprise" id="surprise">
+</section>
 
-<div class="glass">
+<!-- ================= Scene 3 ================= -->
 
-<h1>
+<section id="scene3" class="scene">
 
-❤️
+<div class="gift-container">
 
-</h1>
+<img src="assets/images/lilies.png"
 
-<h2>
+class="lilies"
 
-Thank You...
-
-</h2>
+id="lilies">
 
 <p>
 
-Thank you for being one of the brightest parts of my life.
-
-You make ordinary moments unforgettable.
-
-This little website is just a reminder that
-
-you're appreciated more than words can explain.
+These lilies are for you. 🤍
 
 </p>
 
-<button id="galleryBtn">
+<button id="nextGift">
 
-View Memories 📸
+Accept Flowers
 
 </button>
 
@@ -131,37 +112,129 @@ View Memories 📸
 
 </section>
 
-<!-- ================= Photo Gallery ================= -->
+<!-- ================= Scene 4 ================= -->
 
-<section class="gallery" id="gallery">
+<section id="scene4" class="scene">
+
+<div class="envelope-area">
+
+<img src="assets/images/envelope.png"
+
+id="envelope"
+
+class="envelope">
+
+<p>
+
+Tap the envelope
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ================= Scene 5 ================= -->
+
+<section id="scene5" class="scene">
+
+<div class="letter-container">
+
+<div class="letter">
+
+<h2>Dear You 🤍</h2>
+
+<div id="typewriter"></div>
+
+<button id="continueBtn">
+
+One More Thing...
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= Scene 6 ================= -->
+
+<section id="scene6" class="scene">
+
+<div class="timer-card">
 
 <h1>
 
-Our Memories ❤️
+Since Our Paths Crossed...
 
 </h1>
 
-<div class="photos">
+<div id="timer"></div>
 
-<img src="images/photo1.jpg">
+<div class="buttons">
 
-<img src="images/photo2.jpg">
+<a id="spotifyBtn"
 
-<img src="images/photo3.jpg">
+target="_blank">
 
-<img src="images/photo4.jpg">
+🎵 Playlist
 
-</div>
+</a>
 
-<button id="closeGallery">
+<a id="tiktokBtn"
 
-Close Gallery
+target="_blank">
+
+🎥 TikTok
+
+</a>
+
+<button id="finalBtn">
+
+Final Note
 
 </button>
 
+</div>
+
+</div>
+
 </section>
 
-<canvas id="confetti"></canvas>
+<!-- ================= Final Scene ================= -->
+
+<section id="scene7" class="scene">
+
+<div class="ending">
+
+<h1>
+
+Thank You 🤍
+
+</h1>
+
+<p>
+
+This letter may end here...
+
+<br><br>
+
+But my feelings don't.
+
+</p>
+
+</div>
+
+</section>
+
+<!-- ================= Music ================= -->
+
+<audio id="music" preload="auto">
+
+<source src="music.mp3" type="audio/mpeg">
+
+</audio>
 
 <script src="script.js"></script>
 
