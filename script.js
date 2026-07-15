@@ -2,338 +2,294 @@
    ELEMENTS
 ========================================== */
 
+const loading = document.getElementById("loading-screen");
+
+const scenes = document.querySelectorAll(".scene");
+
+const startBtn = document.getElementById("startBtn");
+
+const postman = document.getElementById("postman");
+
+const nextGift = document.getElementById("nextGift");
+
 const envelope = document.getElementById("envelope");
-const message = document.getElementById("message");
-const nextBtn = document.getElementById("nextBtn");
 
-const surprise = document.getElementById("surprise");
-const gallery = document.getElementById("gallery");
+const typewriter = document.getElementById("typewriter");
 
-const galleryBtn = document.getElementById("galleryBtn");
-const closeGallery = document.getElementById("closeGallery");
+const continueBtn = document.getElementById("continueBtn");
 
-const musicBtn = document.getElementById("musicBtn");
+const finalBtn = document.getElementById("finalBtn");
+
 const music = document.getElementById("music");
 
-/* ==========================================
-   LETTER MESSAGE
-========================================== */
+const petals = document.querySelector(".petals");
 
-const text = `Hey,
-
-I wasn't sure how to say all of this,
-so I decided to make something instead.
-
-Every conversation with you,
-every smile,
-every little memory...
-
-means more to me than you know.
-
-Thank you for being part of my life.
-
-❤️`;
-
-let index = 0;
+const timer = document.getElementById("timer");
 
 /* ==========================================
-   OPEN ENVELOPE
+   LINKS (Replace Later)
 ========================================== */
 
-envelope.addEventListener("click",()=>{
+document.getElementById("spotifyBtn").href="#";
 
-    if(envelope.classList.contains("open")) return;
-
-    envelope.classList.add("open");
-
-    typeWriter();
-
-});
+document.getElementById("tiktokBtn").href="#";
 
 /* ==========================================
-   TYPEWRITER
+   LOADING SCREEN
 ========================================== */
 
-function typeWriter(){
+window.onload=()=>{
 
-    if(index < text.length){
+setTimeout(()=>{
 
-        message.innerHTML += text.charAt(index);
+loading.style.opacity="0";
 
-        index++;
+setTimeout(()=>{
 
-        setTimeout(typeWriter,35);
+loading.style.display="none";
 
-    }
+},1000);
 
-    else{
-
-        nextBtn.style.display="block";
-
-    }
+},2500);
 
 }
 
 /* ==========================================
-   MUSIC
+   SCENE SWITCHER
 ========================================== */
 
-musicBtn.addEventListener("click",()=>{
+function showScene(number){
 
-    if(music.paused){
+scenes.forEach(scene=>{
 
-        music.play();
-
-        musicBtn.innerHTML="⏸ Pause Music";
-
-    }
-
-    else{
-
-        music.pause();
-
-        musicBtn.innerHTML="🎵 Play Music";
-
-    }
+scene.classList.remove("active");
 
 });
 
-/* ==========================================
-   NEXT BUTTON
-========================================== */
+document.getElementById("scene"+number)
 
-nextBtn.addEventListener("click",()=>{
+.classList.add("active");
 
-    surprise.classList.add("show");
-
-});
+}
 
 /* ==========================================
-   OPEN GALLERY
+   START
 ========================================== */
 
-galleryBtn.addEventListener("click",()=>{
+startBtn.onclick=()=>{
 
-    gallery.classList.add("show");
+showScene(2);
 
-});
+}
 
 /* ==========================================
-   CLOSE GALLERY
+   POSTMAN
 ========================================== */
 
-closeGallery.addEventListener("click",()=>{
+postman.onclick=()=>{
 
-    gallery.classList.remove("show");
+showScene(3);
 
-});
+}
 
 /* ==========================================
-   FLOATING HEARTS
+   LILIES
 ========================================== */
 
-const hearts=document.querySelector(".hearts");
+nextGift.onclick=()=>{
 
-function createHeart(){
+showScene(4);
 
-    const heart=document.createElement("div");
+}
 
-    heart.className="heart";
+/* ==========================================
+   ENVELOPE
+========================================== */
 
-    heart.innerHTML="❤️";
+envelope.onclick=()=>{
 
-    heart.style.left=Math.random()*100+"vw";
+envelope.classList.add("open");
 
-    heart.style.fontSize=(18+Math.random()*22)+"px";
+setTimeout(()=>{
 
-    heart.style.animationDuration=(5+Math.random()*5)+"s";
+showScene(5);
 
-    hearts.appendChild(heart);
+music.play();
+
+typeLetter();
+
+},1200);
+
+}
+
+/* ==========================================
+   LETTER
+========================================== */
+
+const letter=`
+
+Hi,
+
+(Your letter will go here.)
+
+Every word you want
+will appear beautifully
+using the typewriter effect.
+
+🤍
+
+`;
+
+let index=0;
+
+function typeLetter(){
+
+if(index<letter.length){
+
+typewriter.innerHTML+=letter.charAt(index);
+
+index++;
+
+setTimeout(typeLetter,40);
+
+}
+
+else{
+
+continueBtn.style.display="block";
+
+}
+
+}
+
+/* ==========================================
+   CONTINUE
+========================================== */
+
+continueBtn.onclick=()=>{
+
+showScene(6);
+
+}
+
+/* ==========================================
+   LIVE TIMER
+========================================== */
+
+const startDate=new Date(
+
+"2023-04-19T00:00:00"
+
+);
+
+function updateTimer(){
+
+const now=new Date();
+
+let diff=now-startDate;
+
+const seconds=Math.floor(diff/1000)%60;
+
+const minutes=Math.floor(diff/60000)%60;
+
+const hours=Math.floor(diff/3600000)%24;
+
+const days=Math.floor(diff/86400000);
+
+timer.innerHTML=`
+
+❤️ ${days} Days
+
+🕒 ${hours} Hours
+
+⏱ ${minutes} Minutes
+
+✨ ${seconds} Seconds
+
+`;
+
+}
+
+setInterval(updateTimer,1000);
+
+updateTimer();
+/* ==========================================
+   LILY PETALS
+========================================== */
+
+function createPetal(){
+
+    const petal=document.createElement("div");
+
+    petal.className="petal";
+
+    petal.innerHTML="🤍";
+
+    petal.style.left=Math.random()*100+"vw";
+
+    petal.style.animationDuration=(8+Math.random()*5)+"s";
+
+    petal.style.fontSize=(16+Math.random()*16)+"px";
+
+    petals.appendChild(petal);
 
     setTimeout(()=>{
 
-        heart.remove();
+        petal.remove();
 
-    },10000);
-
-}
-
-setInterval(createHeart,450);
-/* ==========================================
-   CONFETTI
-========================================== */
-
-const canvas = document.getElementById("confetti");
-const ctx = canvas.getContext("2d");
-
-function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-}
-
-resizeCanvas();
-window.addEventListener("resize", resizeCanvas);
-
-let confetti = [];
-
-function createConfetti() {
-
-    confetti = [];
-
-    for (let i = 0; i < 220; i++) {
-
-        confetti.push({
-
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height - canvas.height,
-
-            r: Math.random() * 6 + 2,
-
-            color: `hsl(${Math.random()*360},100%,65%)`,
-
-            speed: Math.random()*3+2,
-
-            drift: Math.random()*2-1
-
-        });
-
-    }
-
-    animateConfetti();
+    },13000);
 
 }
 
-function animateConfetti(){
-
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-
-    confetti.forEach(c=>{
-
-        ctx.beginPath();
-
-        ctx.fillStyle=c.color;
-
-        ctx.arc(c.x,c.y,c.r,0,Math.PI*2);
-
-        ctx.fill();
-
-        c.y+=c.speed;
-
-        c.x+=c.drift;
-
-        if(c.y>canvas.height){
-
-            c.y=-20;
-
-        }
-
-    });
-
-    requestAnimationFrame(animateConfetti);
-
-}
+setInterval(createPetal,700);
 
 /* ==========================================
-   SHOW CONFETTI
+   SHOOTING STAR
 ========================================== */
 
-galleryBtn.addEventListener("click",()=>{
+function shootingStar(){
 
-    createConfetti();
+    const star=document.createElement("div");
 
-});
+    star.style.position="fixed";
 
-/* ==========================================
-   TWINKLING STARS
-========================================== */
+    star.style.width="3px";
 
-const stars=document.querySelector(".stars");
+    star.style.height="3px";
 
-function sparkle(){
+    star.style.borderRadius="50%";
 
-    stars.animate([
+    star.style.background="white";
 
-        {opacity:.25},
+    star.style.boxShadow="0 0 20px white";
 
-        {opacity:.5},
+    star.style.left=Math.random()*window.innerWidth+"px";
 
-        {opacity:.25}
+    star.style.top="-20px";
 
-    ],{
+    star.style.zIndex="3";
 
-        duration:2500,
+    document.body.appendChild(star);
 
-        iterations:1
+    let x=parseFloat(star.style.left);
 
-    });
+    let y=-20;
 
-}
+    const move=setInterval(()=>{
 
-setInterval(sparkle,2500);
+        x+=7;
 
-/* ==========================================
-   CURSOR GLOW
-========================================== */
+        y+=7;
 
-const glow=document.createElement("div");
+        star.style.left=x+"px";
 
-glow.style.position="fixed";
-glow.style.width="25px";
-glow.style.height="25px";
-glow.style.borderRadius="50%";
-glow.style.pointerEvents="none";
-glow.style.background="rgba(255,120,170,.35)";
-glow.style.filter="blur(12px)";
-glow.style.zIndex="9999";
-
-document.body.appendChild(glow);
-
-document.addEventListener("mousemove",(e)=>{
-
-    glow.style.left=e.clientX-12+"px";
-    glow.style.top=e.clientY-12+"px";
-
-});
-
-/* ==========================================
-   FALLING ROSES
-========================================== */
-
-function rose(){
-
-    const r=document.createElement("div");
-
-    r.innerHTML="🌹";
-
-    r.style.position="fixed";
-
-    r.style.left=Math.random()*100+"vw";
-
-    r.style.top="-50px";
-
-    r.style.fontSize=(20+Math.random()*18)+"px";
-
-    r.style.pointerEvents="none";
-
-    r.style.zIndex="2";
-
-    document.body.appendChild(r);
-
-    let y=-50;
-
-    const fall=setInterval(()=>{
-
-        y+=2;
-
-        r.style.top=y+"px";
-
-        r.style.transform=`rotate(${y}deg)`;
+        star.style.top=y+"px";
 
         if(y>window.innerHeight){
 
-            clearInterval(fall);
+            clearInterval(move);
 
-            r.remove();
+            star.remove();
 
         }
 
@@ -341,41 +297,199 @@ function rose(){
 
 }
 
-setInterval(rose,1800);
+setInterval(shootingStar,8000);
 
 /* ==========================================
-   ENVELOPE GLOW
+   BUTTON LINKS
 ========================================== */
+
+/* Replace these later */
+
+document.getElementById("spotifyBtn").onclick=()=>{
+
+window.open(
+
+"https://spotify.com",
+
+"_blank"
+
+);
+
+}
+
+document.getElementById("tiktokBtn").onclick=()=>{
+
+window.open(
+
+"https://tiktok.com",
+
+"_blank"
+
+);
+
+}
+
+/* ==========================================
+   FINAL NOTE
+========================================== */
+
+finalBtn.onclick=()=>{
+
+showScene(7);
+
+}
+
+/* ==========================================
+   PAGE TITLE ANIMATION
+========================================== */
+
+const titles=[
+
+"A Special Delivery 🤍",
+
+"You've Got Mail 💌",
+
+"Open Me 🌸",
+
+"Someone's Thinking Of You 🤍"
+
+];
+
+let titleIndex=0;
 
 setInterval(()=>{
 
-    envelope.animate([
+document.title=titles[titleIndex];
 
-        {
+titleIndex++;
 
-            boxShadow:"0 0 10px rgba(255,80,120,.2)"
+if(titleIndex>=titles.length){
 
-        },
+titleIndex=0;
 
-        {
+}
 
-            boxShadow:"0 0 45px rgba(255,80,120,.8)"
+},2500);
 
-        },
+/* ==========================================
+   FADE MUSIC AT END
+========================================== */
 
-        {
+function fadeMusic(){
 
-            boxShadow:"0 0 10px rgba(255,80,120,.2)"
+let volume=1;
 
-        }
+const fade=setInterval(()=>{
 
-    ],{
+if(volume<=0){
 
-        duration:1800
+music.pause();
 
-    });
+clearInterval(fade);
 
-},2000);
+}
+
+else{
+
+volume-=0.02;
+
+music.volume=volume;
+
+}
+
+},120);
+
+}
+
+finalBtn.addEventListener("click",fadeMusic);
+
+/* ==========================================
+   LITTLE SPARKLES
+========================================== */
+
+function sparkle(){
+
+const s=document.createElement("div");
+
+s.innerHTML="✨";
+
+s.style.position="fixed";
+
+s.style.left=Math.random()*100+"vw";
+
+s.style.top=Math.random()*100+"vh";
+
+s.style.fontSize=(12+Math.random()*10)+"px";
+
+s.style.pointerEvents="none";
+
+s.style.opacity=".9";
+
+document.body.appendChild(s);
+
+s.animate([
+
+{
+
+opacity:0,
+
+transform:"scale(.5)"
+
+},
+
+{
+
+opacity:1,
+
+transform:"scale(1.2)"
+
+},
+
+{
+
+opacity:0,
+
+transform:"scale(.5)"
+
+}
+
+],{
+
+duration:2200
+
+});
+
+setTimeout(()=>{
+
+s.remove();
+
+},2200);
+
+}
+
+setInterval(sparkle,1200);
+
+/* ==========================================
+   MOBILE VIBRATION
+========================================== */
+
+function vibrate(){
+
+if(navigator.vibrate){
+
+navigator.vibrate(40);
+
+}
+
+}
+
+startBtn.addEventListener("click",vibrate);
+
+postman.addEventListener("click",vibrate);
+
+nextGift.addEventListener("click",vibrate);
+
+envelope.addEventListener("click",vibrate);
 
 /* ==========================================
    END
